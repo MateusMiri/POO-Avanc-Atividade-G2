@@ -16,4 +16,3 @@ Matheus Maschio && Mateus Miri
  
  # Licença
  Copyright © Matheus Maschio & Mateus Miri
- Copyright © Compass Uol
