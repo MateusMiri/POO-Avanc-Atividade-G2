@@ -44,15 +44,6 @@ public abstract class GenericController<TEntidade extends GenericEntity> {
 		return salvar(entidade);
 	}
 
-	@GetMapping()
-	public ResponseEntity<Object> getEntidades(@PageableDefault(page = 0, size = 5, sort = "id", direction = Direction.ASC) Pageable pageable, @RequestParam String nome) throws Exception {
-		Page<TEntidade> entidades = getService().findByNome(pageable, nome);
-		for (TEntidade tEntidade : entidades) {
-			long id = tEntidade.getId();
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(entidades);
-	}
-
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getEntidadesById(@PathVariable long id) throws Exception {
 		Optional<TEntidade> entidade = getService().findById(id);

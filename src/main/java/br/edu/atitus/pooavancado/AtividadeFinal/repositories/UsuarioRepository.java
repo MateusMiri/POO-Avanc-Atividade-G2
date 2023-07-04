@@ -2,6 +2,8 @@ package br.edu.atitus.pooavancado.AtividadeFinal.repositories;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +21,8 @@ public interface UsuarioRepository extends GenericRepository<Usuario>{
 	void alteraStatusById(@Param("ident") long id);
 	
 	Optional<Usuario> findByEmail(String email);
+	
+	Page<Usuario> findByNomeContainingIgnoreCase(Pageable pageable, String nome);
+
+	boolean existsByNomeAndIdNot(String nome, long id);
 }

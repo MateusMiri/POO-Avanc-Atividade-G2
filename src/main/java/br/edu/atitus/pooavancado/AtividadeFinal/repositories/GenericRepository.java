@@ -10,8 +10,5 @@ import br.edu.atitus.pooavancado.AtividadeFinal.Entities.GenericEntity;
 @NoRepositoryBean
 public interface GenericRepository<TEntidade extends GenericEntity> 
 	extends JpaRepository<TEntidade, Long> {
-
-	Page<TEntidade> findByNomeContainingIgnoreCase(Pageable pageable, String nome);
-
-	boolean existsByNomeAndIdNot(String nome, long id);
+	
 }

@@ -1,5 +1,7 @@
 package br.edu.atitus.pooavancado.AtividadeFinal.servicesimpl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.edu.atitus.pooavancado.AtividadeFinal.Entities.Produto;
@@ -19,6 +21,10 @@ public class ProdutoServiceImpl implements ProdutoService{
 	@Override
 	public GenericRepository<Produto> getRepository() {
 		return produtoRepository;
+	}
+	
+	public Page<Produto> findByNome(Pageable pageable, String nome){
+		return ((ProdutoRepository) getRepository()).findByNomeContainingIgnoreCase(pageable, nome);
 	}
 
 	@Override

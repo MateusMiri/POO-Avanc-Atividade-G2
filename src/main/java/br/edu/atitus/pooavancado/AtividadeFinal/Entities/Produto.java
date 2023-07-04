@@ -8,6 +8,9 @@ import jakarta.persistence.Table;
 @Table(name = "produto")
 public class Produto extends GenericEntity {
 	
+	@Column(nullable = false, length = 150)
+	private String nome;
+	
 	@Column(nullable = false, length = 200)
 	private String descricao;
 	
@@ -39,5 +42,13 @@ public class Produto extends GenericEntity {
 
 	public void setUnidadeMedida(String unidadeMedida) {
 		this.unidadeMedida = unidadeMedida;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }

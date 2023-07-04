@@ -17,6 +17,9 @@ public class Usuario extends GenericEntity implements UserDetails{
 
 	private static final long serialVersionUID = 1L;
 	
+	@Column(nullable = false, length = 150)
+	private String nome;
+	
 	@Column(nullable = true, length = 200)
 	private String email;
 	
@@ -50,6 +53,14 @@ public class Usuario extends GenericEntity implements UserDetails{
 		this.senha = senha;
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return null;

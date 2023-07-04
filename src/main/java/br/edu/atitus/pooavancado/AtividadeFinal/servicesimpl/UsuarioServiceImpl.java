@@ -1,5 +1,7 @@
 package br.edu.atitus.pooavancado.AtividadeFinal.servicesimpl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 		Usuario usuario = this.usuarioRepository.findByEmail(email)
 				.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o e-mail: " + email));
 		return usuario;
+	}
+	
+	public Page<Usuario> findByNome(Pageable pageable, String nome){
+		return ((UsuarioRepository) getRepository()).findByNomeContainingIgnoreCase(pageable, nome);
 	}
 
 	@Override
